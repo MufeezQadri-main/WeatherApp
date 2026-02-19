@@ -24,13 +24,17 @@ const visibilty = cards[3]
 
 
 function timeFormat(unix, timezone) {
-    const date = new Date((unix + timezone) * 1000);
-
-    return date.toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: false
-    })
+    const milliseconds = (unix + timezone) * 1000;
+    
+    const date = new Date(milliseconds);
+    
+    const hours = date.getUTCHours();      
+    const minutes = date.getUTCMinutes();  
+    
+    const hoursStr = hours.toString().padStart(2, '0');
+    const minutesStr = minutes.toString().padStart(2, '0');
+    
+    return `${hoursStr}:${minutesStr}`;
 }
 
 function getCurrentDate() {
@@ -92,7 +96,8 @@ function updateUI(weather, air) {
     humd.textContent = `${(weather.main.humidity)}%`
     windSpeed.textContent = `${(Math.round(weather.wind.speed))}m/s`
     pressure.textContent = `${weather.main.pressure}hPa`
-    visibilty.textContent = `${weather.visibility}km`
+    visibilty.textContent = `${weather.visibility}km
+    `
 
 }
 
