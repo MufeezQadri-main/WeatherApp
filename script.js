@@ -7,12 +7,21 @@ const temperature = document.querySelector(".temp")
 const conditionEl = document.querySelector(".condition")
 const dataEl = document.querySelector(".date")
 
+const highAndLow = document.querySelector(".highLow")
+
 const metrics = document.querySelectorAll(".metric strong")
 
 const sunriseEl = metrics[0];
 const sunsetEl = metrics[1];
 const uvEl = metrics[2];
 const aqiEl = metrics[3];
+
+const cards = document.querySelectorAll(".metricsRow .metricCard h2")
+const humd = cards[0]
+const windSpeed = cards[1]
+const pressure = cards[2]
+const visibilty = cards[3]
+
 
 function timeFormat(unix, timezone) {
     const date = new Date((unix + timezone) * 1000);
@@ -75,7 +84,18 @@ function updateUI(weather, air) {
     sunsetEl.textContent = timeFormat(weather.sys.sunset, weather.timezone)
     const aqiMap = ["Good", "Fair", "Moderate", "Poor", "Very Poor"];
     aqiEl.textContent = aqiMap[air.list[0].main.aqi - 1];
+    
+    highAndLow.textContent = `HIGH: ${weather.main.temp_max}° | LOW: ${weather.main.temp_min}°`;
+    console.log("Updated highAndLow to:", highAndLow.textContent);
+    highAndLow.textContent =`HIGH: ${(weather.main.temp_max)}° | LOW: ${(weather.main.temp_min)}°`
+    
+    humd.textContent = `${(weather.main.humidity)}%`
+    windSpeed.textContent = `${(Math.round(weather.wind.speed))}m/s`
+    pressure.textContent = `${weather.main.pressure}hPa`
+    visibilty.textContent = `${weather.visibility}km`
+
 }
+
 
 searchInput.addEventListener("keydown", function (e) {
 
