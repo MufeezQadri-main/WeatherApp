@@ -1,17 +1,170 @@
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
+    <title>Weather - Made By Mufeez.</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <div class="container">
-        <h1>Weather App</h1>
-        <input type="text" id="cityInput" placeholder="Enter city">
-        <button id="searchBtn">Search</button>
-         <div id="weatherResult"></div>
-    </div>
-    <script src="./script.js"></script>
+
+    <header class="navbar">
+
+        <div class="logo">
+            <span class="logoIcon">☁️</span>
+            <span class="logoText">Weather - Mufeez</span>
+        </div>
+
+        <div class="searchContainer">
+            <input type="text" class="searchInput" placeholder="Search city">
+        </div>
+
+    </header>
+
+
+
+    <main class="container">
+        <section class="weatherCard">
+
+            <div class="weatherLeft">
+
+                <p class="location">📍 London, United Kingdom</p>
+
+                <div class="tempRow">
+                    <h1 class="temp">24</h1>
+                    <span class="unit">°C</span>
+                </div>
+
+                <p class="condition">Partly Cloudy</p>
+                <time class="date">Tuesday, 10:30 AM</time>
+
+            </div>
+
+            <div class="weatherCenter">
+
+                <div class="icon">🌤️</div>
+                <div class="highLow">HIGH: 26° | LOW: 18°</div>
+
+            </div>
+
+            <div class="weatherRight">
+
+                <div class="metric">
+                    <span>Sunrise</span>
+                    <strong>05:42 AM</strong>
+                </div>
+
+                <div class="metric">
+                    <span>Sunset</span>
+                    <strong>08:15 PM</strong>
+                </div>
+
+                <div class="metric">
+                    <span>UV Index</span>
+                    <strong>4 (Moderate)</strong>
+                </div>
+
+                <div class="metric">
+                    <span>AQI</span>
+                    <strong>22 (Good)</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="metricsRow">
+
+            <article class="metricCard">
+                <span class="icon">💧</span>
+                <p class="label">Humidity</p>
+                <h2>65%</h2>
+            </article>
+
+            <article class="metricCard">
+                <span class="icon">🌬️</span>
+                <p class="label">Wind Speed</p>
+                <h2>12 km/h</h2>
+            </article>
+
+            <article class="metricCard">
+                <span class="icon">📏</span>
+                <p class="label">Pressure</p>
+                <h2>1012 hPa</h2>
+            </article>
+
+            <article class="metricCard">
+                <span class="icon">👁️</span>
+                <p class="label">Visibility</p>
+                <h2>10 km</h2>
+            </article>
+
+        </section>
+
+
+
+        <section class="forecast">
+
+            <h3 class="forecastTitle">3-DAY FORECAST</h3>
+
+            <div class="forecastList">
+
+                <div class="forecastItem">
+                    <div>
+                        <p>Tomorrow</p>
+                        <small>Mostly Sunny</small>
+                    </div>
+                    <span>☀️</span>
+                    <div>26° <small>19°</small></div>
+                </div>
+
+                <div class="forecastItem">
+                    <div>
+                        <p>Thursday</p>
+                        <small>Cloudy</small>
+                    </div>
+                    <span>☁️</span>
+                    <div>22° <small>17°</small></div>
+                </div>
+
+                <div class="forecastItem">
+                    <div>
+                        <p>Friday</p>
+                        <small>Light Rain</small>
+                    </div>
+                    <span>🌧️</span>
+                    <div>20° <small>15°</small></div>
+                </div>
+
+            </div>
+
+            <button class="forecastBtn">
+                Full 7-Day Forecast →
+            </button>
+
+        </section>
+
+    </main>
+
+
+
+    <footer class="footer">
+
+        <p>© 2026 Mufeez Qadri. Powered by OpenWeather API.</p>
+
+        <nav class="footerLinks">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms</a>
+            <a href="#">Contact</a>
+        </nav>
+
+    </footer>
+    <script src="script.js"></script>
+
 </body>
+
 </html>
