@@ -22,6 +22,15 @@ const windSpeed = cards[1]
 const pressure = cards[2]
 const visibilty = cards[3]
 
+const loaderOverlay = document.querySelector(".loader-overlay")
+
+function showLoader() {
+    loaderOverlay.classList.add('active');
+}
+function hideLoader() {
+    loaderOverlay.classList.remove('active');
+}
+
 
 function timeFormat(unix, timezone) {
     const milliseconds = (unix + timezone) * 1000;
@@ -49,6 +58,7 @@ function getCurrentDate() {
 
 function fetchWeather(city) {
     console.log("Fetching weather for:", city);
+      showLoader();
 
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${api_key}`)
 
@@ -69,12 +79,16 @@ function fetchWeather(city) {
                 .then(function (airData) {
                     console.log("Air pollution data received:", airData);
                     updateUI(weatherData, airData)
+                    setTimeout(hideLoader, 1000);
                 })
         })
         .catch(function (error) {
-            alert(error.message)
-            console.error(error)
-        })
+            setTimeout(function() {
+                hideLoader();
+                alert(error.message);
+            }, 1000);
+        console.error(error);
+    })
 }
 
 function updateUI(weather, air) {
@@ -116,3 +130,5 @@ searchInput.addEventListener("keydown", function (e) {
 });
 
 fetchWeather("Srinagar");
+
+
